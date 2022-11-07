@@ -1,0 +1,19 @@
+{
+  "name": "curso-practico-api-rest---platzi",
+  "version": "1.0.0",
+  "description": "este es un proyecto de prueba de plazi",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VAB-8350/curso-practico-api-rest---Platzi.git"
+  },
+  "author": "@vabklb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VAB-8350/curso-practico-api-rest---Platzi/issues"
+  },
+  "homepage": "https://github.com/VAB-8350/curso-practico-api-rest---Platzi#readme"
+}
