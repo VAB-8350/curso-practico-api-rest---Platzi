@@ -12,6 +12,7 @@
   },
   "author": "@vabklb",
   "license": "MIT",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/VAB-8350/curso-practico-api-rest---Platzi/issues"
   },
