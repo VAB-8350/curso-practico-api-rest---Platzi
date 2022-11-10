@@ -123,7 +123,6 @@ function setObserver (element, url, container) {
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      console.log(entry)
 
       entry.isIntersecting && element.setAttribute('src', `https://image.tmdb.org/t/p/w300/${url}`)
     })
