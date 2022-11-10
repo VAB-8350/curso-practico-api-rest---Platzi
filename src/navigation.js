@@ -105,7 +105,7 @@ function categoryPage(id, name) {
   headerSection.classList.remove('header-container--long')
   headerSection.style.background = ''
   arrowBtn.classList.remove('inactive')
-  arrowBtn.classList.remove('header-arror--white')
+  arrowBtn.classList.remove('header-arrow--white')
   headerTitle.classList.add('inactive')
   headerCategoryTitle.classList.remove('inactive')
   headerCategoryTitle.innerText = name
@@ -126,6 +126,7 @@ function homePage() {
   headerSection.style.background = ''
   arrowBtn.classList.add('inactive')
   headerTitle.classList.remove('inactive')
+  arrowBtn.classList.remove('header-arrow--white')
   headerCategoryTitle.classList.add('inactive')
   searchForm.classList.remove('inactive')
 

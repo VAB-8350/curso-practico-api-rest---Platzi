@@ -11,15 +11,18 @@ const api = axios.create({
 function imagesList(containerHTML, data) {
   containerHTML.innerHTML = ''
 
-  data.forEach(movie => {
+  data.forEach((movie, index) => {
     const movieContainer = document.createElement('div')
     movieContainer.classList.add('movie-container')
+    movieContainer.classList.add('movie-container--loading')
     movieContainer.addEventListener('click',  () => location.hash = `#movie=${movie.id}`)
+    movieContainer.style.animationDelay = `.${index}s`
 
     const movieImg = document.createElement('img')
     movieImg.classList.add('movie-img')
     movieImg.setAttribute('alt', movie.title)
-    movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`)
+    setObserver(movieImg, `https://image.tmdb.org/t/p/w300/${movie.poster_path}`, containerHTML)
+    movieImg.addEventListener('load', () => movieContainer.classList.remove('movie-container--loading'))
     
     movieContainer.appendChild(movieImg)
     containerHTML.appendChild(movieContainer)
@@ -108,4 +111,23 @@ async function getRelatedMoviesId (movie_id) {
   const { data } = await api(`/movie/${movie_id}/recommendations`)
   
   imagesList(relatedMoviesContainer, data.results)
+}
+
+
+
+function setObserver (element, url, container) {
+
+  const options = {
+    root: container,
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      console.log(entry)
+
+      entry.isIntersecting && element.setAttribute('src', `https://image.tmdb.org/t/p/w300/${url}`)
+    })
+  },options)
+
+  observer.observe(element)
 }
