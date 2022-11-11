@@ -50,6 +50,8 @@ function imagesList(containerHTML, data, clean = true) {
   clean && (containerHTML.innerHTML = '')
   const likedList = getLocalStorage()
 
+  console.log('test')
+
   data.forEach((movie, index) => {
     const movieContainer = document.createElement('div')
     movieContainer.classList.add('movie-container')
@@ -67,7 +69,8 @@ function imagesList(containerHTML, data, clean = true) {
       likeTogle(movie)
       
       location.href.includes('#liked') && getMoviesFavorites()
-      location.href.endsWith('#')  && getFavoritesMoviewPreview() && getTrendingMoviewPreview()
+      location.href.endsWith('#')  && getFavoritesMoviewPreview()
+      location.href.endsWith('#')  && getTrendingMoviewPreview()
     })
 
     movieImg.classList.add('movie-img')
