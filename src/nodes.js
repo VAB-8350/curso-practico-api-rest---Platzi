@@ -18,6 +18,9 @@ const relatedMoviesContainer = $('.relatedMovies-scrollContainer');
 
 // Elements
 const headerTitle = $('.header-title');
+const trendingPreviewTitle = $('.trendingPreview-title');
+const likedTitle = $('.liked-title');
+const relatedTitle = $('.relatedMovies-title');
 const arrowBtn = $('.header-arrow');
 const headerCategoryTitle = $('.header-title--categoryView');
 

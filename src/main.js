@@ -4,9 +4,13 @@ const api = axios.create({
     'Content-Type': 'application/json;charset=utf-8'
   },
   params: {
-    'api_key': API_KEY
+    'api_key': API_KEY,
+    "language": navigator.language || "es-ES"
   }
 })
+
+const selectLanguage = navigator.language.startsWith('en') ? dictionary.en : dictionary.es
+setLanguage(selectLanguage)
 
 let page = 1
 let lastquery = ''
@@ -63,7 +67,7 @@ function imagesList(containerHTML, data, clean = true) {
       likeTogle(movie)
       
       location.href.includes('#liked') && getMoviesFavorites()
-      location.href.endsWith('#')  && getFavoritesMoviewPreview()
+      location.href.endsWith('#')  && getFavoritesMoviewPreview() && getTrendingMoviewPreview()
     })
 
     movieImg.classList.add('movie-img')

@@ -1,0 +1,1 @@
+const API_KEY = ''//paste your API_KEY
