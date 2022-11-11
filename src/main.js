@@ -22,10 +22,11 @@ function getLocalStorage () {
 
   LS === null || typeof likedList !== 'object' && localStorage.setItem('liked-Movies', '{}')
 
-  LS = localStorage.getItem('liked-Movies')
-
-  likedList = JSON.parse(LS)
-
+  if (LS === null || typeof likedList !== 'object') {
+    LS = localStorage.getItem('liked-Movies')
+    likedList = JSON.parse(LS)
+  }
+  
   return likedList
 }
 
@@ -48,9 +49,7 @@ function likeTogle(movie) {
 function imagesList(containerHTML, data, clean = true) {
   
   clean && (containerHTML.innerHTML = '')
-  const likedList = getLocalStorage()
-
-  console.log(likedList)
+  const likedStorage = getLocalStorage()
 
   data.forEach((movie, index) => {
     const movieContainer = document.createElement('div')
@@ -62,7 +61,7 @@ function imagesList(containerHTML, data, clean = true) {
     movieImg.addEventListener('click',  () => location.hash = `#movie=${movie.id}`)
     const movieBtn = document.createElement('button')
     movieBtn.classList.add('movie-btn')
-    likedList[movie.id] ? movieBtn.classList.add('movie-btn--liked') : movieBtn.classList.remove('movie-btn--liked')
+    likedStorage[movie.id] ? movieBtn.classList.add('movie-btn--liked') : movieBtn.classList.remove('movie-btn--liked')
 
     movieBtn.addEventListener('click', () => {
       movieBtn.classList.toggle('movie-btn--liked')
