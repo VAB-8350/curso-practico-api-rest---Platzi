@@ -60,7 +60,7 @@ function imagesList(containerHTML, data, clean = true) {
     movieImg.addEventListener('click',  () => location.hash = `#movie=${movie.id}`)
     const movieBtn = document.createElement('button')
     movieBtn.classList.add('movie-btn')
-    likedList[movie.id] && movieBtn.classList.add('movie-btn--liked')
+    likedList[movie.id] ? movieBtn.classList.add('movie-btn--liked') : movieBtn.classList.remove('movie-btn--liked')
 
     movieBtn.addEventListener('click', () => {
       movieBtn.classList.toggle('movie-btn--liked')
