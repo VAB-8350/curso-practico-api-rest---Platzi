@@ -87,22 +87,62 @@ button {
   cursor: pointer;
 }
 
-
 /* Shared */
-.header-container, .trendingPreview-header, .categoriesPreview-container {
+.header-container,
+.trendingPreview-header,
+.categoriesPreview-container,
+.liked-header{
   padding: 0 24px;
 }
 
-.trendingPreview-container, .categoriesPreview-container, footer {
+.trendingPreview-container,
+.categoriesPreview-container,
+.liked-container,
+footer {
   margin-top: 48px;
 }
 
-.trendingPreview-header, .categoriesPreview-title {
+.trendingPreview-header,
+.categoriesPreview-title,
+.liked-header{
   margin-bottom: 24px;
 }
 
-.movie-container {
+.movie-container{
   cursor: pointer;
+  position: relative;
+}
+
+.movie-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  padding: 0;
+  background-color: var(--purple-light-2);
+  opacity: .9;
+  z-index: 10;
+  transition: .2s;
+}
+
+.movie-btn:hover {
+  transition: .5s;
+  transition-timing-function: ease-in-out;
+  transform: scale(1.3);
+}
+
+.movie-btn::before {
+  content: '🖤';
+}
+
+.movie-btn--liked{
+  background-color: var(--purple-light-2);
+}
+
+.movie-btn--liked::before{
+  content: '💜';
 }
 
 .movie-img {
@@ -172,19 +212,22 @@ button {
 
 
 /* Trending */
-.trendingPreview-header {
+.trendingPreview-header,
+.liked-header{
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.trendingPreview-btn {
+.trendingPreview-btn,
+.liked-btn {
   border-radius: 8px;
   height: 32px;
   width: 72px;
 }
 
-.trendingPreview-movieList {
+.trendingPreview-movieList,
+.liked-movieList {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -193,12 +236,14 @@ button {
   padding-bottom: 16px;
 }
 
-.trendingPreview-movieList .movie-container {
+.trendingPreview-movieList .movie-container,
+.liked-movieList .movie-container {
   display: inline-block;
   margin-right: 8px;
 }
 
-.trendingPreview-movieList .movie-container .movie-img {
+.trendingPreview-movieList .movie-container .movie-img,
+.liked-movieList .movie-container .movie-img {
   height: 225px;
   min-height: 225px;
   max-height: 225px;
@@ -333,6 +378,20 @@ button {
 
 .movie-container--loading:nth-child(3){
   animation-delay: .4s;
+}
+
+.title-error {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 20%;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+  font-size: medium;
+  font-family: var(--font-family-titles);
+  font-weight: var(--font-weight-text2);
+  color: var(--purple-dark-2);
 }
 
 

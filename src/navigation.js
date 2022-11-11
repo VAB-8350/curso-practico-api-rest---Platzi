@@ -1,6 +1,8 @@
 let canBack = 0
 const navigator = () => {
 
+  page = 1
+
   if (location.hash.startsWith('#trends')) {
 
     trends()
@@ -24,7 +26,10 @@ const navigator = () => {
     const [id, name] = loc.split('=')[1].split('-')
     categoryPage(id, name.replace('%20', ' '))
 
-  }  else {
+  } else if (location.hash.startsWith('#likeds')) {
+    likedPage()
+  }
+  else {
 
     homePage()
 
@@ -36,6 +41,7 @@ const navigator = () => {
 
 searchFormBtn.addEventListener('click', () => location.hash = `#search=${searchFormInput.value}`)
 trendingBtn.addEventListener('click',  () => location.hash = '#trends')
+likedBtn.addEventListener('click',  () => location.hash = '#likeds')
 arrowBtn.addEventListener('click',  () => canBack > 1 ? window.history.back() : location.hash = '#')
 
 window.addEventListener('DOMContentLoaded', navigator)
@@ -54,6 +60,7 @@ function trends() {
   searchForm.classList.add('inactive')
 
   trendingPreviewSection.classList.add('inactive')
+  likedPreviewSection.classList.add('inactive')
   categoriesPreviewSection.classList.add('inactive')
   genericSection.classList.remove('inactive')
   movieDetailSection.classList.add('inactive')
@@ -73,6 +80,7 @@ function searchPage(search) {
   searchForm.classList.remove('inactive')
 
   trendingPreviewSection.classList.add('inactive')
+  likedPreviewSection.classList.add('inactive')
   categoriesPreviewSection.classList.add('inactive')
   genericSection.classList.remove('inactive')
   movieDetailSection.classList.add('inactive')
@@ -92,6 +100,7 @@ function moviePage(id) {
   searchForm.classList.add('inactive')
 
   trendingPreviewSection.classList.add('inactive')
+  likedPreviewSection.classList.add('inactive')
   categoriesPreviewSection.classList.add('inactive')
   genericSection.classList.add('inactive')
   movieDetailSection.classList.remove('inactive')
@@ -112,6 +121,7 @@ function categoryPage(id, name) {
   searchForm.classList.add('inactive')
 
   trendingPreviewSection.classList.add('inactive')
+  likedPreviewSection.classList.add('inactive')
   categoriesPreviewSection.classList.add('inactive')
   genericSection.classList.remove('inactive')
   movieDetailSection.classList.add('inactive')
@@ -131,10 +141,33 @@ function homePage() {
   searchForm.classList.remove('inactive')
 
   trendingPreviewSection.classList.remove('inactive')
+  likedPreviewSection.classList.remove('inactive')
   categoriesPreviewSection.classList.remove('inactive')
   genericSection.classList.add('inactive')
   movieDetailSection.classList.add('inactive')
 
   getTrendingMoviewPreview()
+  getFavoritesMoviewPreview()
   getCategoriesPreview()
+}
+
+function likedPage() {
+  console.log('liked')
+
+  headerSection.classList.remove('header-container--long')
+  headerSection.style.background = ''
+  arrowBtn.classList.remove('inactive')
+  arrowBtn.classList.remove('header-arror--white')
+  headerTitle.classList.add('inactive')
+  headerCategoryTitle.classList.remove('inactive')
+  headerCategoryTitle.innerText = 'Favoritas'
+  searchForm.classList.add('inactive')
+
+  trendingPreviewSection.classList.add('inactive')
+  likedPreviewSection.classList.add('inactive')
+  categoriesPreviewSection.classList.add('inactive')
+  genericSection.classList.remove('inactive')
+  movieDetailSection.classList.add('inactive')
+
+  getMoviesFavorites()
 }
