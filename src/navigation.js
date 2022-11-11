@@ -131,6 +131,7 @@ function categoryPage(id, name) {
 
 function homePage() {
   console.log('Home')
+  const likedList = getLocalStorage()
 
   headerSection.classList.remove('header-container--long')
   headerSection.style.background = ''
@@ -141,13 +142,14 @@ function homePage() {
   searchForm.classList.remove('inactive')
 
   trendingPreviewSection.classList.remove('inactive')
-  likedPreviewSection.classList.remove('inactive')
+  likedList ? likedPreviewSection.classList.remove('inactive') : likedPreviewSection.classList.add('inactive')
   categoriesPreviewSection.classList.remove('inactive')
   genericSection.classList.add('inactive')
   movieDetailSection.classList.add('inactive')
 
+  likedList && getFavoritesMoviewPreview()
+
   getTrendingMoviewPreview()
-  getFavoritesMoviewPreview()
   getCategoriesPreview()
 }
 

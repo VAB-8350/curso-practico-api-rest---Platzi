@@ -61,7 +61,7 @@ function imagesList(containerHTML, data, clean = true) {
     movieImg.addEventListener('click',  () => location.hash = `#movie=${movie.id}`)
     const movieBtn = document.createElement('button')
     movieBtn.classList.add('movie-btn')
-    likedStorage[movie.id] ? movieBtn.classList.add('movie-btn--liked') : movieBtn.classList.remove('movie-btn--liked')
+    likedStorage && likedStorage[movie.id] ? movieBtn.classList.add('movie-btn--liked') : movieBtn.classList.remove('movie-btn--liked')
 
     movieBtn.addEventListener('click', () => {
       movieBtn.classList.toggle('movie-btn--liked')
@@ -128,12 +128,14 @@ async function getTrendingMoviewPreview() {
 function getFavoritesMoviewPreview() {
   const  likedList = getLocalStorage()
 
-  if (Object.keys(likedList).length === 0) {
-    likedPreviewSection.classList.add('inactive')
-  } else {
-    likedPreviewSection.classList.remove('inactive')
-    imagesList(likedMoviesPreviewList, Object.values(likedList))
-  }  
+  if (likedList) {
+    if (Object.keys(likedList).length === 0) {
+      likedPreviewSection.classList.add('inactive')
+    } else {
+      likedPreviewSection.classList.remove('inactive')
+      imagesList(likedMoviesPreviewList, Object.values(likedList))
+    }  
+  }
 }
 
 async function getCategoriesPreview() {
