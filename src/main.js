@@ -34,7 +34,7 @@ function likeTogle(movie) {
   
   let likedList = getLocalStorage()
 
-  if (likedList[movie.id]) {
+  if (likedList && likedList[movie.id]) {
     delete likedList[movie.id]
 
   } else {
