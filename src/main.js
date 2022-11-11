@@ -50,7 +50,7 @@ function imagesList(containerHTML, data, clean = true) {
   clean && (containerHTML.innerHTML = '')
   const likedList = getLocalStorage()
 
-  console.log('test')
+  console.log(likedList)
 
   data.forEach((movie, index) => {
     const movieContainer = document.createElement('div')
